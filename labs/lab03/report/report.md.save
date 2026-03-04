@@ -1,0 +1,128 @@
+---
+## Front matter
+title: "Лабораторная работа №3"
+subtitle: "дисциплина: Архитектура компьютера"
+author: "Безходарнова Алиса Викторовна"
+
+## Generic options
+lang: ru-RU
+toc-title: "Содержание"
+
+## Bibliography
+bibliography: bib/cite.bib
+csl: pandoc/csl/gost-r-7-0-5-2008-numeric.csl
+
+## Pdf output format
+toc: true # Table of contents
+toc-depth: 2
+lof: true # List of figures
+lot: true # List of tables
+fontsize: 12pt
+linestretch: 1.5
+papersize: a4
+documentclass: scrreprt
+## I18n polyglossia
+polyglossia-lang:
+  name: russian
+  options:
+  - spelling=modern
+  - babelshorthands=true
+polyglossia-otherlangs:
+  name: english
+## I18n babel
+babel-lang: russian
+babel-otherlangs: english
+## Fonts
+mainfont: IBM Plex Serif
+romanfont: IBM Plex Serif
+sansfont: IBM Plex Sans
+monofont: IBM Plex Mono
+mathfont: STIX Two Math
+mainfontoptions: Ligatures=Common,Ligatures=TeX,Scale=0.94
+romanfontoptions: Ligatures=Common,Ligatures=TeX,Scale=0.94
+sansfontoptions: Ligatures=Common,Ligatures=TeX,Scale=MatchLowercase,Scale=0.94
+monofontoptions: Scale=MatchLowercase,Scale=0.94,FakeStretch=0.9
+mathfontoptions:
+## Biblatex
+biblatex: true
+biblio-style: "gost-numeric"
+biblatexoptions:
+  - parentracker=true
+  - backend=biber
+  - hyperref=auto
+  - language=auto
+  - autolang=other*
+  - citestyle=gost-numeric
+## Pandoc-crossref LaTeX customization
+figureTitle: "Рис."
+tableTitle: "Таблица"
+listingTitle: "Листинг"
+lofTitle: "Список иллюстраций"
+lotTitle: "Список таблиц"
+lolTitle: "Листинги"
+## Misc options
+indent: true
+header-includes:
+  - \usepackage{indentfirst}
+  - \usepackage{float} # keep figures where there are in the text
+  - \floatplacement{figure}{H} # keep figures where there are in the text
+---
+# Цель работы
+
+Научиться оформлять отчеты с помощью легкословесного языка разметки Markdown..
+
+# Задание
+
+Сделать отчет по предыдущей лабораторной работе в формате Markdown.
+В качестве отчета предоставить отчеты в трех форматах: pdf, docx и md.
+
+# Теоретическое введение
+
+
+# Выполнение лабораторной работы
+
+Выполняю базовую настройку git (рис. -@fig:git-config).
+
+![Рис 4.1 Конфигурация git](image/1.jpg){#fig:git-config width=70%}
+
+Создаю ключ ssh (рис. -@fig:ssh).
+
+![Рис 4.2 Создание ssh ключа](image/2.jpg){#fig:ssh width=60%}
+
+Создаю ключ gpg (Рис -@fig:gpg).
+
+![Рис 4.3 Создание gpg ключа](image/5.jpg){#fig:gpg width=70%}
+
+Получаю ключи и подключаю их к гитхабу  (Рис -@fig:git) 
+
+![Рис 4.4 подключение ключа](image/3.jpg){#fig:git width=70%)
+
+И (Рис. -@fig:gitt) 
+
+![Рис 4.5 Подключение ключа](image/9.jpg){#fig:gitt width=70%}
+
+Настраиваю автоматические подписи (Рис -@fig:006) 
+
+![Рис 4.6 Подписи для коммитов](image/10.jpg){#fig:006 width=70%}
+
+Авторизуюсь на гитхаб через терминал (Рис -@fig:007) 
+
+![Рис 4.7 Авторизация на github](image/11.jpg){#fig:007 width=70%)
+
+И (Рис -@fig:008) 
+
+![Рис 4.8 Авторизация на гитхаб](image/12.jpg){#fig:008 width=70%}
+
+Создаю директорию курса через шаблон (Рис.-@fig:009)
+
+![Рис 4.9 Создание директории курса](image/13.jpg){#fig:009 width=70%}
+
+И настраиваю рабочую директорию (Рис. -@fig:010) 
+
+![Рис 4.10 Настройка директории](image/14.jpg){#fig:010 width=70%}
+
+# Вывод
+
+В ходе данной лабораторной работы я изучала идеологию и применение средств контроля версий, а также освоила работу с git
+
+# Список литературы{.unnumbered}
