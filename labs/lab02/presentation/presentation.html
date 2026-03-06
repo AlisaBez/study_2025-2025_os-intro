@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Безходарнова А.В.">
+  <title>Лабораторная работа №2</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/metropolis.css" id="theme">
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №2</h1>
+  <p class="subtitle">Архитектура компьютеров</p>
+  <p class="author">Безходарнова А.В.</p>
+  <p class="institute">Российский университет дружбы народов, Москва,
+Россия</p>
+  <p class="date">06 марта 2026</p>
+</section>
+
+<section id="информация" class="slide level1">
+<h1>Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Безходарнова Алиса Викторовна</li>
+<li>Студентка НКАбд-01-25</li>
+<li>Алiса</li>
+<li>Российский университет дружбы народов</li>
+<li><a href="mailto1032253545@rudn.ru">1032253545@rudn.ru</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="./image/alisa.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Изучить идеологию и применение средств контроля версий. Освоить
+умения по работе с git.</p>
+</section>
+<section id="задание" class="slide level1">
+<h1>Задание</h1>
+<p>Создать базовую конфигурацию для работы с git. Создать ключ SSH.
+Создать ключ PGP. Настроить подписи git. Зарегистрироваться на Github.
+Создать локальный каталог для выполнения заданий по предмету.</p>
+</section>
+<section id="актуальность-темы" class="slide level1">
+<h1>Актуальность темы</h1>
+<p>Системы контроля версий, такие как Git, являются неотъемлемым
+инструментом современной разработки, обеспечивающим надёжное хранение
+кода и командную работу.</p>
+</section>
+<section id="объект-и-предмет-исследования." class="slide level1">
+<h1>Объект и предмет исследования.</h1>
+<p>Объектом исследования являются системы контроля версий, а предметом —
+распределённая система Git и её применение.</p>
+</section>
+<section id="научная-новизна." class="slide level1">
+<h1>Научная новизна.</h1>
+<p>Новизна работы заключается в адаптации базовых принципов работы с Git
+для решения учебных задач в рамках курса «Операционные системы».</p>
+</section>
+<section id="практическая-значимость-работы." class="slide level1">
+<h1>Практическая значимость работы.</h1>
+<p>Практическая значимость работы состоит в формировании у студента
+навыков работы с Git, необходимых для выполнения лабораторных работ и
+дальнейшей профессиональной деятельности.</p>
+</section>
+<section id="теоретическое-введение" class="slide level1">
+<h1>Теоретическое введение</h1>
+<p>Системы контроля версий (Version Control System, VCS) применяются при
+работе нескольких человек над одним проектом. Обычно основное дерево
+проекта хранится в локальном или удалённом репозитории, к которому
+настроен доступ для участников проекта. При внесении изменений в
+содержание проекта система контроля версий позволяет их фиксировать,
+совмещать изменения, произведённые разными участниками проекта,
+производить откат к любой более ранней версии проекта, если это
+требуется. В классических системах контроля версий используется
+централизованная модель, предполагающая наличие единого репозитория для
+хранения файлов. Выполнение большинства функций по управлению версиями
+осуществляется специальным сервером. Участник проекта (пользователь)
+перед началом работы посредством определённых команд получает нужную ему
+версию файлов. После внесения изменений, пользователь размещает новую
+версию в хранилище. При этом предыдущие версии не удаляются из
+центрального хранилища и к ним можно вернуться в любой момент. Сервер
+может сохранять не полную версию изменённых файлов, а производить так
+называемую дельта-компрессию — сохранять только изменения между
+последовательными версиями, что позволяет уменьшить объём хранимых
+данных. Системы контроля версий поддерживают возможность отслеживания и
+разрешения конфликтов, которые могут возникнуть при работе нескольких
+человек над одним файлом. Можно объединить (слить) изменения, сделанные
+разными участниками (автоматически или вручную), вручную выбрать нужную
+версию, отменить изменения вовсе или заблокировать файлы для изменения.
+В зависимости от настроек блокировка не позволяет другим пользователям
+получить рабочую копию или препятствует изменению рабочей копии файла
+средствами файловой системы ОС, обеспечивая таким образом,
+привилегированный доступ только одному пользователю, работающему с
+файлом. Системы контроля версий также могут обеспечивать дополнительные,
+более гибкие функциональные возможности.Например, они могут поддерживать
+работу с несколькими версиями одного файла, сохраняя общую историю
+изменений до точки ветвления версий и собственные истории изменений
+каждой ветви. Кроме того, обычно доступна информация о том, кто из
+участников, когда и какие изменения вносил. Обычно такого рода
+информация хранится в журнале изменений, доступ к которому можно
+ограничить. В отличие от классических, в распределённых системах
+контроля версий центральный репозиторий не является обязательным. Среди
+классических VCS наиболее известны CVS, Subversion, а среди
+распределённых — Git, Bazaar, Mercurial. Принципы их работы схожи,
+отличаются они в основном синтаксисом используемых в работе команд.</p>
+</section>
+<section id="выполнение-лабораторной-работы" class="slide level1">
+<h1>Выполнение лабораторной работы</h1>
+<p>Выполняю базовую настройку git (рис. <span class="citation"
+data-cites="fig:git-config">@fig:git-config</span>).</p>
+<figure id="fig:git-config">
+<img data-src="image/1.jpg" style="width:70.0%"
+alt="Конфигурация git" />
+<figcaption aria-hidden="true">Конфигурация git</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Создаю ключ ssh (рис. <span class="citation"
+data-cites="fig:ssh">@fig:ssh</span>).</p>
+<figure id="fig:ssh">
+<img data-src="image/2.jpg" style="width:70.0%"
+alt="Создание ssh ключа" />
+<figcaption aria-hidden="true">Создание ssh ключа</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Создаю ключ gpg (Рис <span class="citation"
+data-cites="fig:gpg">@fig:gpg</span>).</p>
+<figure id="fig:gpg">
+<img data-src="image/5.jpg" style="width:70.0%"
+alt="Создание gpg ключа" />
+<figcaption aria-hidden="true">Создание gpg ключа</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Получаю ключи и подключаю их к гитхабу (Рис <span class="citation"
+data-cites="fig:git">@fig:git</span>)</p>
+<figure id="fig:git">
+<img data-src="image/3.jpg" style="width:70.0%"
+alt="подключение ключа" />
+<figcaption aria-hidden="true">подключение ключа</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>И (Рис. <span class="citation"
+data-cites="fig:gitt">@fig:gitt</span>)</p>
+<figure id="fig:gitt">
+<img data-src="image/9.jpg" style="width:70.0%"
+alt="Подключение ключа" />
+<figcaption aria-hidden="true">Подключение ключа</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Настраиваю автоматические подписи (Рис <span class="citation"
+data-cites="fig:006">@fig:006</span>)</p>
+<figure id="fig:006">
+<img data-src="image/10.jpg" style="width:70.0%"
+alt="Подписи для коммитов" />
+<figcaption aria-hidden="true">Подписи для коммитов</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Авторизуюсь на гитхаб через терминал (Рис <span class="citation"
+data-cites="fig:007">@fig:007</span>)</p>
+<figure id="fig:007">
+<img data-src="image/11.jpg" style="width:70.0%"
+alt="Авторизация на github" />
+<figcaption aria-hidden="true">Авторизация на github</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>И (Рис <span class="citation"
+data-cites="fig:008">@fig:008</span>)</p>
+<figure id="fig:008">
+<img data-src="image/12.jpg" style="width:70.0%"
+alt="Авторизация на гитхаб" />
+<figcaption aria-hidden="true">Авторизация на гитхаб</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Создаю директорию курса через шаблон (Рис.-<span class="citation"
+data-cites="fig:009">@fig:009</span>)</p>
+<figure id="fig:009">
+<img data-src="image/13.jpg" style="width:70.0%"
+alt="Создание директории курса" />
+<figcaption aria-hidden="true">Создание директории курса</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>И настраиваю рабочую директорию (Рис. <span class="citation"
+data-cites="fig:010">@fig:010</span>)</p>
+<figure id="fig:010">
+<img data-src="image/14.jpg" style="width:70.0%"
+alt="Настройка директории" />
+<figcaption aria-hidden="true">Настройка директории</figcaption>
+</figure>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе данной лабораторной работы я изучала идеологию и применение
+средств контроля версий, а также освоила работу с git</p>
+</section>
+<section id="контрольные-вопросы" class="slide level1">
+<h1>Контрольные вопросы</h1>
+<ol type="1">
+<li>Что такое системы контроля версий (VCS) и для решения каких задач
+они предназначаются? Системы контроля версий применяются при работе
+нескольких человек над одним проектом. Они позволяют фиксировать
+изменения, совмещать изменения разных участников, производить откат к
+любой более ранней версии проекта.</li>
+<li>Объясните следующие понятия VCS и их отношения: хранилище, commit,
+история, рабочая копия. Хранилище — место хранения всех файлов проекта и
+истории изменений (в Git это папка .git). Commit — операция сохранения
+изменений в репозитории. История — последовательность коммитов,
+отражающая все изменения проекта. Рабочая копия — файлы проекта на
+локальном компьютере, с которыми непосредственно работает
+пользователь.</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="3" type="1">
+<li>Что представляют собой и чем отличаются централизованные и
+децентрализованные VCS? Приведите примеры VCS каждого вида. В
+классических системах используется централизованная модель,
+предполагающая наличие единого репозитория для хранения файлов.
+Выполнение большинства функций по управлению версиями осуществляется
+специальным сервером. Примеры: CVS, Subversion. В отличие от
+классических, в распределённых системах контроля версий центральный
+репозиторий не является обязательным. Примеры: Git, Bazaar,
+Mercurial.</li>
+<li>Опишите действия с VCS при единоличной работе с хранилищем.
+Инициализация репозитория (git init), создание и изменение файлов,
+добавление их в индекс (git add), фиксация изменений (git commit).</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="5" type="1">
+<li>Опишите порядок работы с общим хранилищем VCS. Получение актуальной
+версии из центрального репозитория (git pull), создание новой ветки (git
+checkout -b имя_ветки), внесение изменений, добавление (git add) и
+фиксация (git commit), отправка изменений в центральный репозиторий (git
+push origin имя_ветки).</li>
+<li>Каковы основные задачи, решаемые инструментальным средством git?
+Управление версиями, обеспечение совместной работы над проектом,
+возможность отката к любой предыдущей версии, поддержка ветвления и
+слияния.</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="7" type="1">
+<li>Назовите и дайте краткую характеристику командам git. git init —
+создание нового репозитория</li>
+</ol>
+<p>git add — добавление изменений в индекс</p>
+<p>git commit — фиксация изменений</p>
+<p>git push — отправка изменений в удалённый репозиторий</p>
+<p>git pull — получение изменений из удалённого репозитория</p>
+<p>git status — просмотр состояния файлов</p>
+<p>git log — просмотр истории коммитов</p>
+<p>git checkout — переключение между ветками</p>
+<p>git branch — управление ветками</p>
+<p>git merge — слияние веток</p>
+</section>
+<section class="slide level1">
+
+<ol start="8" type="1">
+<li>Приведите примеры использования при работе с локальным и удалённым
+репозиториями. Локальный репозиторий: mkdir tutorial; cd tutorial; git
+init; echo ‘hello world’ &gt; hello.txt; git add hello.txt; git commit
+-am ‘Новый файл’ Удалённый репозиторий: git remote add origin
+ssh://git@github.com/username/reponame.git; git push -u origin
+master</li>
+<li>Что такое и зачем могут быть нужны ветви (branches)? Ветви позволяют
+вести параллельную разработку, изолировать изменения,
+экспериментировать, не затрагивая основную версию проекта, а затем
+объединять изменения через слияние.</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="10" type="1">
+<li>Как и зачем можно игнорировать некоторые файлы при commit? Для этого
+создаётся файл .gitignore, в который прописываются шаблоны файлов и
+каталогов (например, <em>.tmp, </em>.o, build/), которые не должны
+попадать в репозиторий. Это позволяет исключить временные файлы,
+объектные файлы, создаваемые компиляторами, и другие служебные
+данные.</li>
+</ol>
+</section>
+<section id="список-литературы" class="slide level1 unnumbered">
+<h1 class="unnumbered">Список литературы</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
