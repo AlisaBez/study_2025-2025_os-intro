@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Безходарнова А.В.">
+  <title>Лабораторная работа №1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/metropolis.css" id="theme">
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №1</h1>
+  <p class="subtitle">Архитектура компьютеров</p>
+  <p class="author">Безходарнова А.В.</p>
+  <p class="institute">Российский университет дружбы народов, Москва,
+Россия</p>
+  <p class="date">06 марта 2026</p>
+</section>
+
+<section id="информация" class="slide level1">
+<h1>Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Безходарнова Алиса Викторовна</li>
+<li>Студентка НКАбд-01-25</li>
+<li>Алiса</li>
+<li>Российский университет дружбы народов</li>
+<li><a href="mailto1032253545@rudn.ru">1032253545@rudn.ru</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img src="./image/alisa.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Целью данной работы является приобретение практических навыков
+установки операционной системы на виртуальную машину, настройки
+минимально необходимых для дальнейшей работы сервисов.</p>
+</section>
+<section id="задание" class="slide level1">
+<h1>Задание</h1>
+<ul>
+<li>Установить Linux на виртуальную машину</li>
+<li>Настроить операционную систему</li>
+</ul>
+</section>
+<section id="теоретическое-введение" class="slide level1">
+<h1>Теоретическое введение</h1>
+<p>Linux — это семейство свободных UNIX-подобных операционных систем с
+открытым исходным кодом, базирующихся на одноимённом ядре (созданном
+Линусом Торвальдсом в 1991 году). Linux отличается высокой надежностью,
+безопасностью и гибкостью, используется на серверах, суперкомпьютерах,
+Android-устройствах, встраиваемой технике и ПК.</p>
+</section>
+<section id="выполнение-лабораторной-работы" class="slide level1">
+<h1>Выполнение лабораторной работы</h1>
+<p>Устаавливаю ОС на свою виртуальную машину (рис. <span
+class="citation" data-cites="fig:001">@fig:001</span>).</p>
+<figure id="fig:01">
+<img src="image/1.jpg" style="width:70.0%" alt="Установка" />
+<figcaption aria-hidden="true">Установка</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Устанавливаю файлы на жесткий диск и задаю параметры (рис. <span
+class="citation" data-cites="fig:002">@fig:002</span>).</p>
+<figure id="fig:002">
+<img src="image/2.jpg" style="width:70.0%"
+alt="Задание параметров" />
+<figcaption aria-hidden="true">Задание параметров</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Устанавливаю средства разработки (Рис <span class="citation"
+data-cites="fig:003">@fig:003</span>).</p>
+<figure id="fig:003">
+<img src="image/3.jpg" style="width:70.0%"
+alt="Средства разработки" />
+<figcaption aria-hidden="true">Средства разработки</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>И (Рис <span class="citation"
+data-cites="fig:004">@fig:004</span>)</p>
+<figure id="fig:004">
+<img src="image/6.jpg" style="width:70.0%"
+alt="Средства разработки" />
+<figcaption aria-hidden="true">Средства разработки</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Отключаю SELinux (Рис. <span class="citation"
+data-cites="fig:005">@fig:005</span>)</p>
+<figure id="fig:005">
+<img src="image/4.jpg" style="width:70.0%" alt="SELinux" />
+<figcaption aria-hidden="true">SELinux</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Создаю конфигурационный файл (Рис <span class="citation"
+data-cites="fig:006">@fig:006</span>)</p>
+<figure id="fig:006">
+<img src="image/5.jpg" style="width:70.0%" alt="Создание файла" />
+<figcaption aria-hidden="true">Создание файла</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>И редактирую раскладки клавиатуры (Рис <span class="citation"
+data-cites="fig:007">@fig:007</span>)</p>
+<figure id="fig:007">
+<img src="image/9.jpg" style="width:70.0%"
+alt="Раскладка клавиатуры" />
+<figcaption aria-hidden="true">Раскладка клавиатуры</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Устанавливаю pandoc-crossref (Рис <span class="citation"
+data-cites="fig:008">@fig:008</span>)</p>
+<figure id="fig:008">
+<img src="image/10.jpg" style="width:70.0%"
+alt="Pandoc-crossref" />
+<figcaption aria-hidden="true">Pandoc-crossref</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Устанавливаю pandoc и pandoc-crossref, а также помещаю их в каталог
+(Рис.-<span class="citation" data-cites="fig:009">@fig:009</span>)</p>
+<figure id="fig:009">
+<img src="image/12.jpg" style="width:70.0%"
+alt="Перемещение файлов" />
+<figcaption aria-hidden="true">Перемещение файлов</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Устанавливаю texlive (Рис. <span class="citation"
+data-cites="fig:010">@fig:010</span>)</p>
+<figure id="fig:010">
+<img src="image/13.jpg" style="width:70.0%"
+alt="Установка texlive" />
+<figcaption aria-hidden="true">Установка texlive</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>И убеждаюсь, что оно установилось (Рис <span class="citation"
+data-cites="fig:011">@fig:011</span>)</p>
+<figure id="fig:011">
+<img src="image/14.jpg" style="width:70.0%" alt="Установка" />
+<figcaption aria-hidden="true">Установка</figcaption>
+</figure>
+</section>
+<section id="домашнее-задание" class="slide level1">
+<h1>Домашнее задание</h1>
+<p>Ввожу команды в терминал (Рис. <span class="citation"
+data-cites="fig:012">@fig:012</span>)</p>
+<figure id="fig:012">
+<img src="image/15.jpg" style="width:70.0%"
+alt="Домашнее задание" />
+<figcaption aria-hidden="true">Домашнее задание</figcaption>
+</figure>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе данной лабораторной работы я научилась устанавливать Linux,а
+также настраивать ее для дальнейшей работы.</p>
+</section>
+<section id="контрольные-вопросы" class="slide level1">
+<h1>Контрольные вопросы</h1>
+<ol type="1">
+<li><p>Учётная запись пользователя содержит идентификационную и
+служебную информацию: имя пользователя, зашифрованный пароль (или ссылку
+на него), числовой идентификатор пользователя (UID), числовой
+идентификатор основной группы (GID), комментарий (обычно ФИО), путь к
+домашнему каталогу и командную оболочку, назначаемую при входе.</p></li>
+<li><p>Команды терминала</p></li>
+</ol>
+<ol type="a">
+<li>Для получения справки по команде: · man · –help</li>
+<li>Для перемещения по файловой системе: · cd</li>
+<li>Для просмотра содержимого каталога: · ls</li>
+<li>Для определения объёма каталога: · du</li>
+<li>Для создания / удаления каталогов / файлов:</li>
+</ol>
+<ul>
+<li>mkdir (создание каталога)</li>
+<li>touch (создание файла)</li>
+<li>rmdir (удаление пустого каталога)</li>
+<li>rm (удаление файла или каталога)</li>
+</ul>
+<ol start="6" type="a">
+<li>Для задания определённых прав на файл / каталог:</li>
+</ol>
+<ul>
+<li>chmod</li>
+</ul>
+<ol start="7" type="a">
+<li>Для просмотра истории команд:</li>
+</ol>
+<ul>
+<li>history</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<ol start="3" type="1">
+<li>Файловая система — это метод и структура данных, определяющие способ
+организации, хранения и именования данных на носителе информации. Она
+управляет доступом к файлам и распределением места. Примеры:</li>
+</ol>
+<ul>
+<li>ext4: Журналируемая файловая система, стандартная для многих
+дистрибутивов Linux. Поддерживает большие файлы и тома, обладает высокой
+производительностью и надежностью.</li>
+<li>XFS: Высокопроизводительная журналируемая файловая система,
+оптимизированная для параллельных операций и работы с большими файлами.
+Часто используется в серверных решениях.</li>
+<li>btrfs: Современная файловая система с поддержкой снапшотов, сжатия и
+проверки целостности данных (механизм copy-on-write).</li>
+<li>NTFS: Журналируемая файловая система семейства Windows,
+поддерживающая большие тома, разграничение прав доступа и
+шифрование.</li>
+</ul>
+</section>
+<section class="slide level1">
+
+<ol start="4" type="1">
+<li>Для просмотра подмонтированных файловых систем используются команды
+mount (без аргументов) или df. Информация также доступна в файле
+/etc/mtab.</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="5" type="1">
+<li>Для удаления зависшего процесса необходимо определить его
+идентификатор (PID) с помощью команд ps или top, после чего отправить
+ему сигнал завершения командой kill. В случае если процесс не реагирует
+на стандартный запрос завершения, используется принудительный сигнал с
+опцией -9.</li>
+</ol>
+</section>
+<section id="список-литературы" class="slide level1 unnumbered">
+<h1 class="unnumbered">Список литературы</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
