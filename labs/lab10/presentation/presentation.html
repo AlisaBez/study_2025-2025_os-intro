@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Безходарнова А.В.">
+  <title>Лабораторная работа №10</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/metropolis.css" id="theme">
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №10</h1>
+  <p class="subtitle">Архитектура компьютеров</p>
+  <p class="author">Безходарнова А.В.</p>
+  <p class="institute">Российский университет дружбы народов, Москва,
+Россия</p>
+  <p class="date">11 апреля 2026</p>
+</section>
+
+<section id="информация" class="slide level1">
+<h1>Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Безходарнова Алиса Викторовна</li>
+<li>Студентка НКАбд-01-25</li>
+<li>Алiса</li>
+<li>Российский университет дружбы народов</li>
+<li><a href="mailto1032253545@rudn.ru">1032253545@rudn.ru</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="./image/alisa.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Познакомиться с операционной системой Linux. Получить практические
+навыки работы с редактором vi, установленным по умолчанию практически во
+всех дистрибутивах.</p>
+</section>
+<section id="задание" class="slide level1">
+<h1>Задание</h1>
+<ol type="1">
+<li>Ознакомиться с теоретическим материалом.</li>
+<li>Ознакомиться с редактором vi.</li>
+<li>Выполнить упражнения, используя команды vi.</li>
+</ol>
+</section>
+<section id="теоретическое-введение" class="slide level1">
+<h1>Теоретическое введение</h1>
+<p>В большинстве дистрибутивов Linux в качестве текстового редактора по
+умолчанию устанавливается интерактивный экранный редактор vi (Visual
+display editor). Редактор vi имеет три режима работы: – командный режим
+— предназначен для ввода команд редактирования и навигации по
+редактируемому файлу; – режим вставки — предназначен для ввода
+содержания редактируемого файла; – режим последней (или командной)
+строки — используется для записи изменений в файл и выхода из редактора.
+Для вызова редактора vi необходимо указать команду vi и имя
+редактируемого файла: vi <имя_файла> При этом в случае отсутствия файла
+с указанным именем будет создан такой файл. Переход в командный режим
+осуществляется нажатием клавиши Esc . Для выхода из редактора vi
+необходимо перейти в режим последней строки: находясь в командном
+режиме, нажать Shift-; (по сути символ : — двоеточие), затем: – набрать
+символы wq, если перед выходом из редактора требуется записать изменения
+в файл; – набрать символ q (или q!), если требуется выйти из редактора
+без сохранения.</p>
+</section>
+<section id="выполнение-лабораторной-работы" class="slide level1">
+<h1>Выполнение лабораторной работы</h1>
+<p>Cоздаю новый каталог, перехожу в него и вызываю файл. (рис. <span
+class="citation" data-cites="fig:001">@fig:001</span>).</p>
+<figure id="fig:001">
+<img data-src="image/1.jpg" style="width:70.0%" alt="Вызов файла" />
+<figcaption aria-hidden="true">Вызов файла</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Ввожу текст в файл (рис. <span class="citation"
+data-cites="fig:002">@fig:002</span>).</p>
+<figure id="fig:002">
+<img data-src="image/2.jpg" style="width:70.0%" alt="ввод текста" />
+<figcaption aria-hidden="true">ввод текста</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Делаю файл исполянемым (Рис <span class="citation"
+data-cites="fig:003">@fig:003</span>).</p>
+<figure id="fig:003">
+<img data-src="image/3.jpg" style="width:70.0%"
+alt="Исполнение файла" />
+<figcaption aria-hidden="true">Исполнение файла</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Меняю текст по указаниям (Рис <span class="citation"
+data-cites="fig:004">@fig:004</span>)</p>
+<figure id="fig:004">
+<img data-src="image/4.jpg" style="width:70.0%"
+alt="Изменение текста" />
+<figcaption aria-hidden="true">Изменение текста</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Удаляю добавленную строку (Рис <span class="citation"
+data-cites="fig:005">@fig:005</span>)</p>
+<figure id="fig:005">
+<img data-src="image/5.jpg" style="width:70.0%" alt="Удаление строки" />
+<figcaption aria-hidden="true">Удаление строки</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>С помощью клавиш возвращаю строчку и сохраняю файл</p>
+<figure id="fig:006">
+<img data-src="image/6.jpg" style="width:70.0%"
+alt="Возвращение строки" />
+<figcaption aria-hidden="true">Возвращение строки</figcaption>
+</figure>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе данной лабораторной работы я освоила возможности работы с
+редактором vi и пПриобрела навыки практической работы.</p>
+</section>
+<section id="контрольные-вопросы" class="slide level1">
+<h1>Контрольные вопросы</h1>
+<ol type="1">
+<li><p>Дайте краткую характеристику режимам работы редактора vi.
+Командный (ввод команд), ввода (набор текста), последней строки (команды
+с :), визуальный (выделение).</p></li>
+<li><p>Как выйти из редактора, не сохраняя произведённые изменения? В
+командном режиме :q!.</p></li>
+<li><p>Назовите и дайте краткую характеристику командам
+позиционирования. h/j/k/l — движение, w/b — по словам, 0/$ —
+начало/конец строки, gg/G — начало/конец файла.</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="4" type="1">
+<li><p>Что для редактора vi является словом? Последовательность букв,
+цифр и знака подчёркивания, ограниченная пробелами или знаками
+препинания.</p></li>
+<li><p>Каким образом из любого места редактируемого файла перейти в
+начало (конец) файла? gg — в начало, G — в конец.</p></li>
+<li><p>Назовите и дайте краткую характеристику основным группам команд
+редактирования. Удаление (dd, x), вставка (i, a), замена (r, s),
+копирование/вставка (yy, p), отмена (u), повтор (.).</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="7" type="1">
+<li><p>Необходимо заполнить строку символами $. Каковы ваши действия? cc
+(очистить строку и войти в режим ввода), затем набрать нужное количество
+$.</p></li>
+<li><p>Как отменить некорректное действие, связанное с процессом
+редактирования? u — отмена, Ctrl+r — возврат отменённого.</p></li>
+<li><p>Назовите и дайте характеристику основным группам команд режима
+последней строки. Сохранение (:w), выход (:q), поиск (/), замена
+(:s/old/new/), установка параметров (:set).</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="10" type="1">
+<li><p>Как определить, не перемещая курсора, позицию, в которой
+заканчивается строка? Команда $ перемещает курсор. Без перемещения —
+визуально по номеру строки или :set number.</p></li>
+<li><p>Выполните анализ опций редактора vi (сколько их, как узнать их
+назначение и т.д.). Десятки. Узнать — :set all, назначение конкретной —
+:help option.</p></li>
+<li><p>Как определить режим работы редактора vi? По реакции клавиш: ввод
+текста — режим ввода, команды — командный, строка с : — режим последней
+строки.</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="13" type="1">
+<li>Постройте граф взаимосвязи режимов работы редактора vi. Командный →
+режим ввода через i/a/o, обратно через Esc. Командный → режим последней
+строки через :, обратно через Enter. Командный → визуальный через v/V,
+обратно через Esc.</li>
+</ol>
+</section>
+<section id="список-литературы" class="slide level1 unnumbered">
+<h1 class="unnumbered">Список литературы</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
