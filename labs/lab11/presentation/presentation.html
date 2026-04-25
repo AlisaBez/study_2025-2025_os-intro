@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Безходарнова А.В.">
+  <title>Лабораторная работа №11</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/metropolis.css" id="theme">
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №11</h1>
+  <p class="subtitle">Архитектура компьютеров</p>
+  <p class="author">Безходарнова А.В.</p>
+  <p class="institute">Российский университет дружбы народов, Москва,
+Россия</p>
+  <p class="date">25 апреля 2026</p>
+</section>
+
+<section id="информация" class="slide level1">
+<h1>Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Безходарнова Алиса Викторовна</li>
+<li>Студентка НКАбд-01-25</li>
+<li>Алiса</li>
+<li>Российский университет дружбы народов</li>
+<li><a href="mailto1032253545@rudn.ru">1032253545@rudn.ru</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="./image/alisa.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Познакомиться с операционной системой Linux. Получить практические
+навыки работы с редактором Emacs</p>
+</section>
+<section id="задание" class="slide level1">
+<h1>Задание</h1>
+<ol type="1">
+<li>Ознакомиться с теоретическим материалом.</li>
+<li>Ознакомиться с редактором emacs.</li>
+<li>Выполнить упражнения.</li>
+<li>Ответить на контрольные вопросы.</li>
+</ol>
+</section>
+<section id="теоретическое-введение" class="slide level1">
+<h1>Теоретическое введение</h1>
+<p>Буфер — объект, представляющий какой-либо текст. Буфер может
+содержать что угодно, например, результаты компиляции программы или
+встроенные подсказки. Практически всё взаимодействие с пользователем, в
+том числе интерактивное, происходит посредством буферов. Фрейм
+соответствует окну в обычном понимании этого слова. Каждый фрейм
+содержит область вывода и одно или несколько окон Emacs. Окно —
+прямоугольная область фрейма, отображающая один из буферов. Каждое окно
+имеет свою строку состояния, в которой выводится следующая информация:
+название буфера, его основной режим, изменялся ли текст буфера и как
+далеко вниз по буферу расположен курсор. Каждый буфер находится только в
+одном из возможных основных режимов. Существующие основные режимы
+включают режим Fundamental (наименее специализированный), режим Text,
+режим Lisp, режим С, режим Texinfo и другие. Под второстепенными
+режимами понимается список режимов, которые включены в данный момент в
+буфере выбранного окна.</p>
+</section>
+<section id="выполнение-лабораторной-работы" class="slide level1">
+<h1>Выполнение лабораторной работы</h1>
+<p>Открываю редактор, создаю файл и записываю туда текст. (рис. <span
+class="citation" data-cites="fig:001">@fig:001</span>).</p>
+<figure id="fig:001">
+<img data-src="image/1.jpg" style="width:70.0%" alt="Набор текста" />
+<figcaption aria-hidden="true">Набор текста</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Вырезаю строчку и вставляю ее в конец файла (рис. <span
+class="citation" data-cites="fig:002">@fig:002</span>).</p>
+<figure id="fig:002">
+<img data-src="image/2.jpg" style="width:70.0%"
+alt="Работа со строкой" />
+<figcaption aria-hidden="true">Работа со строкой</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Выделяю облатсь текста и также вставляю ее в конец (Рис <span
+class="citation" data-cites="fig:003">@fig:003</span>).</p>
+<figure id="fig:003">
+<img data-src="image/3.jpg" style="width:70.0%"
+alt="Работа с текстом" />
+<figcaption aria-hidden="true">Работа с текстом</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Удаляю всю облсть с помощью клавиш (Рис <span class="citation"
+data-cites="fig:004">@fig:004</span>)</p>
+<figure id="fig:004">
+<img data-src="image/4.jpg" style="width:70.0%"
+alt="Изменение текста" />
+<figcaption aria-hidden="true">Изменение текста</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Возвращаю все обратно (Рис <span class="citation"
+data-cites="fig:005">@fig:005</span>)</p>
+<figure id="fig:005">
+<img data-src="image/5.jpg" style="width:70.0%" alt="Возвращение" />
+<figcaption aria-hidden="true">Возвращение</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Делю фрейм на 4 части.</p>
+<figure id="fig:006">
+<img data-src="image/7.jpg" style="width:70.0%" alt="Деление фрейма" />
+<figcaption aria-hidden="true">Деление фрейма</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>В каждом новом окне пишу текст</p>
+<figure id="fig:007">
+<img data-src="image/8.jpg" style="width:70.0%" alt="Текст" />
+<figcaption aria-hidden="true">Текст</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Выполняю поиск</p>
+<figure id="fig:008">
+<img data-src="image/9.jpg" style="width:70.0%" alt="Поиск" />
+<figcaption aria-hidden="true">Поиск</figcaption>
+</figure>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе данной лабораторной работы я познакомилась с операционной
+системой Linux и приобрела практические навыки работы с редактором
+Emacs.</p>
+</section>
+<section id="контрольные-вопросы" class="slide level1">
+<h1>Контрольные вопросы</h1>
+<ol type="1">
+<li><p>Кратко охарактеризуйте редактор emacs. - Emacs — мощный
+расширяемый текстовый редактор на языке Elisp, поддерживающий буферы,
+окна, фреймы и множество режимов.</p></li>
+<li><p>Какие особенности данного редактора могут сделать его сложным для
+освоения новичком? - Нестандартные комбинации клавиш (C-, M-),
+отсутствие привычных Ctrl+C/Ctrl+V, большое количество команд,
+непривычная терминология.</p></li>
+<li><p>Своими словами опишите, что такое буфер и окно в терминологии
+emacs’а. - Буфер — это область памяти, содержащая текст (файл, справку,
+сообщение). Окно — прямоугольная область на экране, в которой
+отображается один из буферов.</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="4" type="1">
+<li><p>Можно ли открыть больше 10 буферов в одном окне? - Да, можно. В
+одном окне одновременно виден только один буфер, но переключаться между
+буферами можно в любом количестве.</p></li>
+<li><p>Какие буферы создаются по умолчанию при запуске emacs? - scratch,
+Messages, GNU Emacs.</p></li>
+<li><p>Какие клавиши вы нажмёте, чтобы ввести следующую комбинацию C-c |
+и C-c C-|? - C-c |: Ctrl+C, затем Shift+. C-c C-|: Ctrl+C, затем
+Ctrl+Shift+.</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="7" type="1">
+<li><p>Как поделить текущее окно на две части? - C-x 2 (горизонтально)
+или C-x 3 (вертикально).</p></li>
+<li><p>В каком файле хранятся настройки редактора emacs? - ~/.emacs или
+~/.emacs.d/init.el.</p></li>
+<li><p>Какую функцию выполняет клавиша &lt;- (стрелка влево) и можно ли
+её переназначить? - Стрелка влево перемещает курсор на один символ
+влево. Да, можно переназначить через global-set-key или
+define-key.</p></li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="10" type="1">
+<li>Какой редактор вам показался удобнее в работе vi или emacs? Поясните
+почему. - Emacs удобнее, потому что он немодальный (не нужно переключать
+режимы), имеет удобную работу с буферами и окнами, встроенную справку и
+легко расширяется.</li>
+</ol>
+</section>
+<section id="список-литературы" class="slide level1 unnumbered">
+<h1 class="unnumbered">Список литературы</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
