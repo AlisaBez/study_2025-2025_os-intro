@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Безходарнова А.В.">
+  <title>Лабораторная работа №12</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/metropolis.css" id="theme">
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №12</h1>
+  <p class="subtitle">Архитектура компьютеров</p>
+  <p class="author">Безходарнова А.В.</p>
+  <p class="institute">Российский университет дружбы народов, Москва,
+Россия</p>
+  <p class="date">25 апреля 2026</p>
+</section>
+
+<section id="информация" class="slide level1">
+<h1>Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Безходарнова Алиса Викторовна</li>
+<li>Студентка НКАбд-01-25</li>
+<li>Алiса</li>
+<li>Российский университет дружбы народов</li>
+<li><a href="mailto1032253545@rudn.ru">1032253545@rudn.ru</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="./image/alisa.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Изучить основы программирования в оболочке ОС UNIX/Linux. Научиться
+писать небольшие командные файлы.</p>
+</section>
+<section id="задание" class="slide level1">
+<h1>Задание</h1>
+<ol type="1">
+<li>Написать скрипт, который при запуске будет делать резервную копию
+самого себя (то есть файла, в котором содержится его исходный код) в
+другую директорию backup в вашем домашнем каталоге. При этом файл должен
+архивироваться одним из ар- хиваторов на выбор zip, bzip2 или tar.
+Способ использования команд архивации необходимо узнать, изучив
+справку.</li>
+<li>Написать пример командного файла, обрабатывающего любое произвольное
+число аргументов командной строки, в том числе превышающее десять.
+Например, скрипт может последовательно распечатывать значения всех
+переданных аргументов.</li>
+<li>Написать командный файл — аналог команды ls (без использования самой
+этой ко- манды и команды dir). Требуется, чтобы он выдавал информацию о
+нужном каталоге и выводил информацию о возможностях доступа к файлам
+этого каталога.</li>
+<li>Написать командный файл, который получает в качестве аргумента
+командной строки формат файла (.txt, .doc, .jpg, .pdf и т.д.) и
+вычисляет количество таких файлов в указанной директории. Путь к
+директории также передаётся в виде аргумента ко- мандной строки.</li>
+</ol>
+</section>
+<section id="теоретическое-введение" class="slide level1">
+<h1>Теоретическое введение</h1>
+<p>Командный процессор (командная оболочка, интерпретатор команд shell)
+— это программа, позволяющая пользователю взаимодействовать с
+операционной системой компьютера. В операционных системах типа
+UNIX/Linux наиболее часто используются следующие реализации командных
+оболочек: – оболочка Борна (Bourne shell или sh) — стандартная командная
+оболочка UNIX/Linux, содержащая базовый, но при этом полный набор
+функций; – С-оболочка (или csh) — надстройка на оболочкой Борна,
+использующая С-подобный синтаксис команд с возможностью сохранения
+истории выполнения команд; – оболочка Корна (или ksh) — напоминает
+оболочку С, но операторы управления програм- мой совместимы с
+операторами оболочки Борна; – BASH — сокращение от Bourne Again Shell
+(опять оболочка Борна), в основе своей совмещает свойства оболочек С и
+Корна (разработка компании Free Software Foundation). POSIX (Portable
+Operating System Interface for Computer Environments) — набор стандартов
+описания интерфейсов взаимодействия операционной системы и прикладных
+программ. Стандарты POSIX разработаны комитетом IEEE (Institute of
+Electrical and Electronics Engineers) для обеспечения совместимости
+различных UNIX/Linux-подобных операционных систем и переносимости
+прикладных программ на уровне исходного кода. POSIX-совместимые оболочки
+разработаны на базе оболочки Корна.</p>
+</section>
+<section id="выполнение-лабораторной-работы" class="slide level1">
+<h1>Выполнение лабораторной работы</h1>
+<p>Пишу скрипт который при запуске делает резервную копию самого
+себя.</p>
+<figure id="fig:001">
+<img data-src="image/1.jpg" style="width:70.0%" alt="Скрипт 1" />
+<figcaption aria-hidden="true">Скрипт 1</figcaption>
+</figure>
+<p>Пишу командный файл, обрабатывающий любое произвольное число
+аргументов (рис. <span class="citation"
+data-cites="fig:002">@fig:002</span>).</p>
+<figure id="fig:002">
+<img data-src="image/2.jpg" style="width:70.0%" alt="Командый файл" />
+<figcaption aria-hidden="true">Командый файл</figcaption>
+</figure>
+<p>Пишу файл, аналог команды ls (Рис <span class="citation"
+data-cites="fig:003">@fig:003</span>).</p>
+<figure id="fig:003">
+<img data-src="image/3.jpg" style="width:70.0%"
+alt="Аналог команды ls" />
+<figcaption aria-hidden="true">Аналог команды ls</figcaption>
+</figure>
+<p>Делаю файлы исполняемыми (Рис <span class="citation"
+data-cites="fig:004">@fig:004</span>)</p>
+<figure id="fig:004">
+<img data-src="image/4.jpg" style="width:70.0%"
+alt="Исполняемость файлов" />
+<figcaption aria-hidden="true">Исполняемость файлов</figcaption>
+</figure>
+<p>Запускаю файлы (Рис <span class="citation"
+data-cites="fig:005">@fig:005</span>)</p>
+<figure id="fig:005">
+<img data-src="image/5.jpg" style="width:70.0%" alt="Запуск" />
+<figcaption aria-hidden="true">Запуск</figcaption>
+</figure>
+<p>И</p>
+<figure id="fig:006">
+<img data-src="image/6.jpg" style="width:70.0%" alt="Запуск" />
+<figcaption aria-hidden="true">Запуск</figcaption>
+</figure>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе данной лабораторной работы я изучила основы программирования в
+ОС Linux. Научилась писать небольшие командные файлы.</p>
+</section>
+<section id="контрольные-вопросы" class="slide level1">
+<h1>Контрольные вопросы</h1>
+<ol type="1">
+<li><p>Объясните понятие командной оболочки. Приведите примеры командных
+оболочек. Чем они отличаются? Командная оболочка - это программа,
+обеспечивающая взаимодействие пользователя с операционной системой.
+Примеры: sh, csh, ksh, bash. Они отличаются синтаксисом и
+дополнительными возможностями (история команд, совместимость).</p></li>
+<li><p>Что такое POSIX? POSIX - это набор стандартов, описывающих
+интерфейсы между ОС и прикладными программами для обеспечения
+совместимости и переносимости на уровне исходного кода.</p></li>
+<li><p>Как определяются переменные и массивы в языке программирования
+bash? Переменная определяется присваиванием: имя=значение. Массив
+определяется: имя=(элемент1 элемент2). Обращение к переменной: $имя.
+Обращение к элементу массива: ${имя[индекс]}.</p></li>
+<li><p>Каково назначение операторов let и read? let выполняет
+арифметические вычисления. read читает значения переменных со
+стандартного ввода (клавиатуры).</p></li>
+<li><p>Какие арифметические операции можно применять в языке
+программирования bash? Сложение, вычитание, умножение, деление, остаток
+от деления, инкремент, декремент, побитовые операции (AND, OR, XOR,
+сдвиги), сравнение.</p></li>
+<li><p>Что означает операция (( ))? (( )) используется для выполнения
+арифметических вычислений и проверки арифметических условий без
+использования команды let.</p></li>
+<li><p>Какие стандартные имена переменных Вам известны? PATH, HOME, IFS,
+MAIL, TERM, LOGNAME, PS1, PS2.</p></li>
+<li><p>Что такое метасимволы? Метасимволы - это символы, имеющие для
+командного процессора специальный смысл: * ? [ ] &lt; &gt; |  &amp; ; $
+! # и другие.</p></li>
+<li><p>Как экранировать метасимволы? С помощью символа  перед
+метасимволом, либо заключением в одинарные кавычки, либо в двойные
+кавычки (кроме $, `, , “).</p></li>
+<li><p>Как создавать и запускать командные файлы? Создать текстовый файл
+с командами, сделать его исполняемым командой chmod +x имя_файла, затем
+запускать вводом его имени.</p></li>
+<li><p>Как определяются функции в языке программирования bash? С помощью
+ключевого слова function: function имя { список_команд; } или имя() {
+список_команд; }.</p></li>
+<li><p>Каким образом можно выяснить, является файл каталогом или обычным
+файлом? С помощью условного оператора test -d (каталог) или test -f
+(обычный файл).</p></li>
+<li><p>Каково назначение команд set, typeset и unset? set - выводит
+значения всех переменных. typeset - объявляет тип переменной (целая,
+экспортируемая). unset - удаляет переменную или функцию.</p></li>
+<li><p>Как передаются параметры в командные файлы? Параметры передаются
+в командной строке после имени файла. Внутри скрипта доступны как $1,
+$2, … $9, $@ и $*.</p></li>
+<li><p>Назовите специальные переменные языка bash и их назначение. $0 -
+имя скрипта. $1-$9 - позиционные параметры. $# - количество параметров.
+$* - все параметры одной строкой. $@ - все параметры отдельными словами.
+$? - код завершения последней команды. $$ - идентификатор процесса. $! -
+номер последней фоновой команды.</p></li>
+</ol>
+</section>
+<section id="список-литературы" class="slide level1 unnumbered">
+<h1 class="unnumbered">Список литературы</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
