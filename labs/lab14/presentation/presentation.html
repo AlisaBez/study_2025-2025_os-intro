@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Безходарнова А.В.">
+  <title>Лабораторная работа №14</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/metropolis.css" id="theme">
+  
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №14</h1>
+  <p class="subtitle">Архитектура компьютеров</p>
+  <p class="author">Безходарнова А.В.</p>
+  <p class="institute">Российский университет дружбы народов, Москва,
+Россия</p>
+  <p class="date">25 апреля 2026</p>
+</section>
+
+<section id="информация" class="slide level1">
+<h1>Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Безходарнова Алиса Викторовна</li>
+<li>Студентка НКАбд-01-25</li>
+<li>Алiса</li>
+<li>Российский университет дружбы народов</li>
+<li><a href="mailto1032253545@rudn.ru">1032253545@rudn.ru</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="./image/alisa.jpg" /></p>
+</div>
+</div>
+</section>
+<section id="цель-работы" class="slide level1">
+<h1>Цель работы</h1>
+<p>Изучить основы программирования в оболочке ОС UNIX. Научиться писать
+более сложные командные файлы с использованием логических управляющих
+конструкций и циклов.</p>
+</section>
+<section id="задание" class="slide level1">
+<h1>Задание</h1>
+<ol type="1">
+<li>Написать командный файл, реализующий упрощённый механизм семафоров.
+Ко- мандный файл должен в течение некоторого времени t1 дожидаться
+освобождения ресурса, выдавая об этом сообщение, а дождавшись его
+освобождения, использовать его в течение некоторого времени
+t2&lt;&gt;t1, также выдавая информацию о том, что ресурс используется
+соответствующим командным файлом (процессом). Запустить командный файл в
+одном виртуальном терминале в фоновом режиме, перенаправив его вывод в
+другой (&gt; /dev/tty#, где # — номер терминала куда перенаправляется
+вывод), в котором также запущен этот файл, но не фоновом, а в
+привилегированном режиме. Доработать программу так, чтобы имелась
+возможность взаимодействия трёх и более процессов.</li>
+<li>Реализовать команду man с помощью командного файла. Изучите
+содержимое ката- лога /usr/share/man/man1. В нем находятся архивы
+текстовых файлов, содержащих справку по большинству установленных в
+системе программ и команд. Каждый архив можно открыть командой less
+сразу же просмотрев содержимое справки. Командный файл должен получать в
+виде аргумента командной строки название команды и в виде результата
+выдавать справку об этой команде или сообщение об отсутствии справки,
+если соответствующего файла нет в каталоге man1.</li>
+<li>Используя встроенную переменную $RANDOM, напишите командный файл,
+генерирую- щий случайную последовательность букв латинского алфавита.
+Учтите, что $RANDOM выдаёт псевдослучайные числа в диапазоне от 0 до
+32767</li>
+</ol>
+</section>
+<section id="теоретическое-введение" class="slide level1">
+<h1>Теоретическое введение</h1>
+<p>Командный процессор (командная оболочка, интерпретатор команд shell)
+— это программа, позволяющая пользователю взаимодействовать с
+операционной системой компьютера. В операционных системах типа
+UNIX/Linux наиболее часто используются следующие реализации командных
+оболочек: – оболочка Борна (Bourne shell или sh) — стандартная командная
+оболочка UNIX/Linux, содержащая базовый, но при этом полный набор
+функций; – С-оболочка (или csh) — надстройка на оболочкой Борна,
+использующая С-подобный синтаксис команд с возможностью сохранения
+истории выполнения команд; – оболочка Корна (или ksh) — напоминает
+оболочку С, но операторы управления програм- мой совместимы с
+операторами оболочки Борна; – BASH — сокращение от Bourne Again Shell
+(опять оболочка Борна), в основе своей совмещает свойства оболочек С и
+Корна (разработка компании Free Software Foundation). POSIX (Portable
+Operating System Interface for Computer Environments) — набор стандартов
+описания интерфейсов взаимодействия операционной системы и прикладных
+программ. Стандарты POSIX разработаны комитетом IEEE (Institute of
+Electrical and Electronics Engineers) для обеспечения совместимости
+различных UNIX/Linux-подобных операционных систем и переносимости
+прикладных программ на уровне исходного кода. POSIX-совместимые оболочки
+разработаны на базе оболочки Корна.</p>
+</section>
+<section id="выполнение-лабораторной-работы" class="slide level1">
+<h1>Выполнение лабораторной работы</h1>
+<p>Создаю файл</p>
+<figure id="fig:001">
+<img data-src="image/1.jpg" style="width:70.0%" alt="Файл первый" />
+<figcaption aria-hidden="true">Файл первый</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Пишу программу</p>
+<figure id="fig:002">
+<img data-src="image/2.jpg" style="width:70.0%" alt="Командый файл" />
+<figcaption aria-hidden="true">Командый файл</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Делаю файл исполняемым</p>
+<figure id="fig:003">
+<img data-src="image/3.jpg" style="width:70.0%" alt="Запуск файла" />
+<figcaption aria-hidden="true">Запуск файла</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Создаю второй программный код</p>
+<figure id="fig:004">
+<img data-src="image/4.jpg" style="width:70.0%" alt="Второй код" />
+<figcaption aria-hidden="true">Второй код</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Запускаю его и проверяю работу</p>
+<figure id="fig:005">
+<img data-src="image/5.jpg" style="width:70.0%" alt="Запуск" />
+<figcaption aria-hidden="true">Запуск</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Также пишу последний программный код</p>
+<figure id="fig:006">
+<img data-src="image/6.jpg" style="width:70.0%" alt="Третий код" />
+<figcaption aria-hidden="true">Третий код</figcaption>
+</figure>
+</section>
+<section class="slide level1">
+
+<p>Запускаю код, проверяя его работу</p>
+<figure id="fig:007">
+<img data-src="image/7.jpg" style="width:70.0%" alt="Запуск кода" />
+<figcaption aria-hidden="true">Запуск кода</figcaption>
+</figure>
+</section>
+<section id="вывод" class="slide level1">
+<h1>Вывод</h1>
+<p>В ходе данной лабораторной работы я изучила основы программирования в
+облочке OC UNIX. Научилась писать более сложные командные файлы с
+использованием логических управляющих конструкций и файлов</p>
+</section>
+<section id="контрольные-вопросы" class="slide level1">
+<h1>Контрольные вопросы</h1>
+<ol type="1">
+<li>Найдите синтаксическую ошибку в следующей строке: Там нужно
+поставить пробелы</li>
+<li>Как объединить (конкатенация) несколько строк в одну? Просто
+написать переменные подряд</li>
+<li>Найдите информацию об утилите seq. Какими иными способами можно
+реализовать её функционал при программировании на bash? seq генерирует
+числа; замену можно сделать через for</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="4" type="1">
+<li>Какой результат даст вычисление выражения $((10/3))? 3 Целочисленное
+деление</li>
+<li>Укажите кратко основные отличия командной оболочки zsh от bash. zsh
+имеет автодополнение, исправление опечаток и расширенные
+glob-паттерны</li>
+<li>Проверьте, верен ли синтаксис данной конструкции 1 for ((a=1; a
+&lt;= LIMIT; a++)) Синтаксис верен, работает в bash</li>
+</ol>
+</section>
+<section class="slide level1">
+
+<ol start="7" type="1">
+<li>Сравните язык bash с какими-либо языками программирования. Какие
+преимущества у bash по сравнению с ними? Какие недостатки? Преимущества:
+работа с процессами и файлами напрямую; недостатки: медленный, плох для
+математики и сложных структур</li>
+</ol>
+</section>
+<section id="список-литературы" class="slide level1 unnumbered">
+<h1 class="unnumbered">Список литературы</h1>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
